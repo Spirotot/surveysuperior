@@ -41,58 +41,32 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         conStr = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         SqlConnection conn = new SqlConnection(conStr);
         conn.Open();
+        
+        //Check SurveyType
+        SqlCommand cmd0 = new SqlCommand("SELECT SurveyType FROM CreateSurvey WHERE SurveyName = @pSurveyName", conn);
+        cmd0.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
 
-        // SELECT ANSWER FROM DATABASE GIVEN BY LOGGED IN USER ON THE GIVEN SURVEY
-        check = "SELECT Answer, SurveyType FROM Answer WHERE SurveyName = @pSurveyName AND Username = @pUsername";
-        SqlCommand cmd1 = new SqlCommand(check, conn);
-        cmd1.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
-        cmd1.Parameters.AddWithValue("@pUsername", User.Identity.Name.ToString());
-
-
-        SqlDataReader dr;
-        cmd1.CommandText = check;
-        dr = cmd1.ExecuteReader();
-        if (dr.Read())
+        SqlDataReader r = cmd0.ExecuteReader();
+        while (r.Read())
         {
-            // IF AN ANSWER WAS ALREADY GIVEN FOR THIS SURVEY CHANGE IT TO THE NOW SELECTED ANSWER
-            dr.Close();
-            update = "UPDATE Answer SET Answer = @pAnswer WHERE SurveyName = @pSurveyName AND Username  = @pUsername ";
-            SqlCommand cmd2 = new SqlCommand(update, conn);
-            cmd2.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
-            cmd2.Parameters.AddWithValue("@pUsername ", User.Identity.Name.ToString());
-
-            //Check survey type...
-            if (dr["SurveyType"].ToString() == "B" || dr["SurveyType"].ToString() == "A")
+            if (r["SurveyType"].ToString() == "A" || r["SurveyType"].ToString() == "B")
             {
-                cmd2.Parameters.AddWithValue("@pAnswer", null); //It is a type B or A, so don't keep track of answer...
+                //Update answer table with username, null answer
+                vote("");
+
+                //Update PAnswers, Answercount = Answercount + 1
+                SqlCommand cmd99 = new SqlCommand("UPDATE PAnswers SET Answercount = Answercount + 1 WHERE SurveyName = @pSurveyName AND Answer = @pAnswer", conn);
+                cmd99.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
+                cmd99.Parameters.AddWithValue("@pAnswer", Label1.Text);
+
+                r.Close();
+                cmd99.ExecuteNonQuery();
+                break;
             }
             else
             {
-                cmd2.Parameters.AddWithValue("@pAnswer", Label1.Text); // Not a type B, so keep track of answer...
+                vote(Label1.Text);
             }
-            //END Check survey type...
-
-            cmd2.Parameters.AddWithValue("@pDate", DateTime.Now.ToString());
-            cmd2.Parameters.AddWithValue("@pClassName", DropDownList1.Text);
-
-            cmd2.CommandText = update;
-            cmd2.ExecuteNonQuery();
-
-        }
-        else
-        {
-            // OTHERWISE INSERT ANSWER INTO ANSWER TABLE
-            dr.Close();
-            insert = "INSERT INTO Answer VALUES (@pSurveyName, @pUsername , @pAnswer, @pDate, @pClassName)";
-            SqlCommand cmd2 = new SqlCommand(insert, conn);
-            cmd2.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
-            cmd2.Parameters.AddWithValue("@pUsername ", User.Identity.Name.ToString());
-            cmd2.Parameters.AddWithValue("@pAnswer", Label1.Text);
-            cmd2.Parameters.AddWithValue("@pDate", DateTime.Now.ToString());
-            cmd2.Parameters.AddWithValue("@pClassName", DropDownList1.Text);
-
-            cmd2.CommandText = insert;
-            cmd2.ExecuteNonQuery();
         }
         conn.Close();
     }
@@ -129,7 +103,6 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         dr.Close();
         conn.Close();
     }
-
     protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
     {
         // CONVERT DATE FROM THE DATE DROPDOWNLIST INTO A STRING THAT WILL MATCH WHATS IN OUR DATABASE
@@ -204,6 +177,54 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         }
         dr1.Close();
 
+        conn.Close();
+    }
+    protected void vote(string ans)
+    {
+        // CREATE CONNECTION TO DATABASE
+        string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(conStr);
+        conn.Open();
+
+        // SELECT ANSWER FROM DATABASE GIVEN BY LOGGED IN USER ON THE GIVEN SURVEY
+        string check = "SELECT Answer FROM Answer WHERE SurveyName = @pSurveyName AND Username = @pUsername";
+        SqlCommand cmd1 = new SqlCommand(check, conn);
+        cmd1.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
+        cmd1.Parameters.AddWithValue("@pUsername", User.Identity.Name.ToString());
+
+
+        SqlDataReader dr = cmd1.ExecuteReader();
+        if (dr.Read())
+        {
+            // IF AN ANSWER WAS ALREADY GIVEN FOR THIS SURVEY CHANGE IT TO THE NOW SELECTED ANSWER
+            dr.Close();
+            string update = "UPDATE Answer SET Answer = @pAnswer WHERE SurveyName = @pSurveyName AND Username  = @pUsername ";
+            SqlCommand cmd2 = new SqlCommand(update, conn);
+            cmd2.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
+            cmd2.Parameters.AddWithValue("@pUsername ", User.Identity.Name.ToString());
+            cmd2.Parameters.AddWithValue("@pAnswer", ans);
+            cmd2.Parameters.AddWithValue("@pDate", DateTime.Now.ToString());
+            cmd2.Parameters.AddWithValue("@pClassName", DropDownList1.Text);
+
+            cmd2.CommandText = update;
+            cmd2.ExecuteNonQuery();
+
+        }
+        else
+        {
+            // OTHERWISE INSERT ANSWER INTO ANSWER TABLE
+            dr.Close();
+            string insert = "INSERT INTO Answer VALUES (@pSurveyName, @pUsername , @pAnswer, @pDate, @pClassName)";
+            SqlCommand cmd2 = new SqlCommand(insert, conn);
+            cmd2.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
+            cmd2.Parameters.AddWithValue("@pUsername ", User.Identity.Name.ToString());
+            cmd2.Parameters.AddWithValue("@pAnswer", ans);
+            cmd2.Parameters.AddWithValue("@pDate", DateTime.Now.ToString());
+            cmd2.Parameters.AddWithValue("@pClassName", DropDownList1.Text);
+
+            cmd2.CommandText = insert;
+            cmd2.ExecuteNonQuery();
+        }
         conn.Close();
     }
 
