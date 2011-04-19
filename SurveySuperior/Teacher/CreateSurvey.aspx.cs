@@ -13,6 +13,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            // ADD A BLANK TO THE CLASSNAME DROPDOWNLIST (CLASSNAMES ARE THE CONTENTS OF DROPDOWNLIST1)
             DropDownList1.AppendDataBoundItems = true;
             DropDownList1.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             DropDownList1.SelectedIndex = 0;
@@ -20,14 +21,17 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             string conStr;
             string sqlStr;
 
+            // CREATE CONNECTION TO DATABASE
             conStr = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(conStr);
             conn.Open();
 
+            // SELECT ALL CLASSNAMES THAT WERE MADE BY THE LOGGED IN TEACHER
             sqlStr = "SELECT ClassName FROM Class WHERE Teacher = @pTeacher";
             SqlCommand cmd = new SqlCommand(sqlStr, conn);
             cmd.Parameters.AddWithValue("@pTeacher", User.Identity.Name.ToString());
 
+            // PUT ALL CLASSNAMES THAT MATCH THIS CRITERIA INTO DROPDOWNLIST1
             SqlDataReader dr;
             cmd.CommandText = sqlStr;
             dr = cmd.ExecuteReader();
@@ -46,10 +50,12 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
         string insert;
         string date = DateTime.Now.Date.ToString();
 
+        // CREATE CONNECTION TO DATABASE
         conStr = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         SqlConnection conn = new SqlConnection(conStr);
         conn.Open();
 
+        // CHECK TO SEE IF SURVERYNAME ALREADY EXISTS
         check = "SELECT SurveyName FROM CreateSurvey WHERE SurveyName = @pSurveyName";
         SqlCommand cmd1 = new SqlCommand(check, conn);
         cmd1.Parameters.AddWithValue("@pSurveyName", TextBox1.Text);
@@ -59,11 +65,13 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
         dr = cmd1.ExecuteReader();
         if (dr.Read())
         {
+            // IF IT DOES TELL USER TO PICK A DIFFERENT SURVEY NAME
             dr.Close();
             Label7.Text = "Pick a different survey name.";
         }
         else
         {
+            // OTHERWISE PUT THE SURVERYNAME, ANSWERS, CREATOR, DATE, ETC INTO CREATESURVERY TABLE
             dr.Close();
             insert = "INSERT INTO CreateSurvey VALUES (@pSurveyName, @pCreator, @pSurveyQuestion, @pA1, @pA2, @pA3, @pA4, @pDate, @pClassName)";
             SqlCommand cmd2 = new SqlCommand(insert, conn);
@@ -80,6 +88,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             cmd2.CommandText = insert;
             cmd2.ExecuteNonQuery();
 
+            // INSERT POSSIBLE ANSWERS INTO PANSWERS TABLE (ALLOWS US TO EASILY PRINT OUT THE POSSIBLE ANSWERS FOR THE SURVEY TAKERS)
             insert = "INSERT INTO PAnswers VALUES (@pSurveyName, @pA1)";
             SqlCommand cmd3 = new SqlCommand(insert, conn);
             cmd3.Parameters.AddWithValue("@pSurveyName", TextBox1.Text);
