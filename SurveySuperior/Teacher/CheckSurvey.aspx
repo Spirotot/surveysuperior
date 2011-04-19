@@ -34,6 +34,10 @@
     </asp:DropDownList>
     <br />
     <br />
+    Survey type:
+    <asp:Label ID="Label11" runat="server" Text="Label"></asp:Label>
+    <br />
+    <br />
     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     &nbsp;picked
     <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>

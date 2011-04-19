@@ -50,6 +50,9 @@
     Question:
     <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
     <br />
+    Type:
+    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+    <br />
     <asp:RadioButtonList ID="RadioButtonList1" runat="server" 
         DataSourceID="SqlDataSource4" DataTextField="Answer" 
         DataValueField="Answer">

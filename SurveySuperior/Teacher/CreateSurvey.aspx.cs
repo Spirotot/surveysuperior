@@ -84,7 +84,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             cmd2.Parameters.AddWithValue("@pA4", TextBox6.Text);
             cmd2.Parameters.AddWithValue("@pDate", date);
             cmd2.Parameters.AddWithValue("@pClassName", DropDownList1.Text);
-            cmd1.Parameters.AddWithValue("@pSurveyType", DropDownList2.Text);
+            cmd2.Parameters.AddWithValue("@pSurveyType", DropDownList2.Text);
 
             cmd2.CommandText = insert;
             cmd2.ExecuteNonQuery();

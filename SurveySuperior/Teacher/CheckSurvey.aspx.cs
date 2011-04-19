@@ -160,12 +160,24 @@ public partial class Teacher_CheckSurvey : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(conStr);
             conn.Open();
 
+            //Display the SurveyType
+            SqlCommand cmd0 = new SqlCommand("SELECT SurveyType FROM CreateSurvey WHERE SurveyName = @pSurveyName", conn);
+            cmd0.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
+
+            SqlDataReader dr = cmd0.ExecuteReader();
+            while (dr.Read())
+            {
+                Label11.Text = dr["SurveyType"].ToString();
+            }
+            dr.Close();
+            //END Display the SurveyType
+
             // DISPLAY THE FIRST POSSIBLE ANSWER FOR THE SELECTED SURVEY NAME
             check = "SELECT A1 FROM CreateSurvey WHERE SurveyName = @pSurveyName";
             SqlCommand cmd1 = new SqlCommand(check, conn);
             cmd1.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
             cmd1.CommandText = check;
-            SqlDataReader dr;
+
             dr = cmd1.ExecuteReader();
             if (dr.Read())
             {

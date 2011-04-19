@@ -43,7 +43,7 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         conn.Open();
 
         // SELECT ANSWER FROM DATABASE GIVEN BY LOGGED IN USER ON THE GIVEN SURVEY
-        check = "SELECT Answer FROM Answer WHERE SurveyName = @pSurveyName AND Username = @pUsername";
+        check = "SELECT Answer, SurveyType FROM Answer WHERE SurveyName = @pSurveyName AND Username = @pUsername";
         SqlCommand cmd1 = new SqlCommand(check, conn);
         cmd1.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
         cmd1.Parameters.AddWithValue("@pUsername", User.Identity.Name.ToString());
@@ -60,7 +60,18 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
             SqlCommand cmd2 = new SqlCommand(update, conn);
             cmd2.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
             cmd2.Parameters.AddWithValue("@pUsername ", User.Identity.Name.ToString());
-            cmd2.Parameters.AddWithValue("@pAnswer", Label1.Text);
+
+            //Check survey type...
+            if (dr["SurveyType"].ToString() == "B" || dr["SurveyType"].ToString() == "A")
+            {
+                cmd2.Parameters.AddWithValue("@pAnswer", null); //It is a type B or A, so don't keep track of answer...
+            }
+            else
+            {
+                cmd2.Parameters.AddWithValue("@pAnswer", Label1.Text); // Not a type B, so keep track of answer...
+            }
+            //END Check survey type...
+
             cmd2.Parameters.AddWithValue("@pDate", DateTime.Now.ToString());
             cmd2.Parameters.AddWithValue("@pClassName", DropDownList1.Text);
 
@@ -171,7 +182,7 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         conn.Open();
 
         // SURVEY QUESTION THAT MATCHES DATE, CLASSNAME, AND SURVEY NAME
-        sqlStr = "SELECT SurveyQuestion FROM CreateSurvey WHERE Date = @pDate AND ClassName = @pClassName AND SurveyName = @pSurveyName";
+        sqlStr = "SELECT SurveyQuestion, SurveyType FROM CreateSurvey WHERE Date = @pDate AND ClassName = @pClassName AND SurveyName = @pSurveyName";
         SqlCommand cmd1 = new SqlCommand(sqlStr, conn);
         cmd1.Parameters.AddWithValue("@pDate", Label2.Text);
         cmd1.Parameters.AddWithValue("@pClassName", DropDownList1.Text);
@@ -184,6 +195,7 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         if (dr1.Read())
         {
             Label3.Text = dr1.GetValue(0).ToString();
+            Label4.Text = dr1["SurveyType"].ToString();
         }
         else
         {
