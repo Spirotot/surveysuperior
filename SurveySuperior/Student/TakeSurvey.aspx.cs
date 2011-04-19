@@ -49,7 +49,7 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         SqlDataReader r = cmd0.ExecuteReader();
         while (r.Read())
         {
-            if (r["SurveyType"].ToString() == "A" || r["SurveyType"].ToString() == "B")
+            if (r["SurveyType"].ToString() == "A" || r["SurveyType"].ToString() == "B") //Anonymous or keep track of who's voted, but not votes
             {
                 //Update answer table with username, null answer
                 vote("");
@@ -65,7 +65,7 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
             }
             else
             {
-                vote(Label1.Text);
+                vote(Label1.Text); //This is exactly the same as what Chuck's code was doing before, before I even messed with anything.
             }
         }
         conn.Close();
