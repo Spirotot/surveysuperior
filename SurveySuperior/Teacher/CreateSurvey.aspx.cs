@@ -73,7 +73,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
         {
             // OTHERWISE PUT THE SURVERYNAME, ANSWERS, CREATOR, DATE, ETC INTO CREATESURVERY TABLE
             dr.Close();
-            insert = "INSERT INTO CreateSurvey VALUES (@pSurveyName, @pCreator, @pSurveyQuestion, @pA1, @pA2, @pA3, @pA4, @pDate, @pClassName)";
+            insert = "INSERT INTO CreateSurvey VALUES (@pSurveyName, @pCreator, @pSurveyQuestion, @pA1, @pA2, @pA3, @pA4, @pDate, @pClassName, @pSurveyType)";
             SqlCommand cmd2 = new SqlCommand(insert, conn);
             cmd2.Parameters.AddWithValue("@pSurveyName", TextBox1.Text);
             cmd2.Parameters.AddWithValue("@pCreator", User.Identity.Name.ToString());
@@ -84,6 +84,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             cmd2.Parameters.AddWithValue("@pA4", TextBox6.Text);
             cmd2.Parameters.AddWithValue("@pDate", date);
             cmd2.Parameters.AddWithValue("@pClassName", DropDownList1.Text);
+            cmd1.Parameters.AddWithValue("@pSurveyType", DropDownList2.Text);
 
             cmd2.CommandText = insert;
             cmd2.ExecuteNonQuery();

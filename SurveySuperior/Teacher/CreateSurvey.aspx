@@ -19,6 +19,14 @@
     </asp:DropDownList>
     <br />
     <br />
+    Survey Type:
+    <asp:DropDownList ID="DropDownList2" runat="server">
+        <asp:ListItem Value="A">Anonymous</asp:ListItem>
+        <asp:ListItem Value="B">Keep who voted, but not what they voted</asp:ListItem>
+        <asp:ListItem Value="C">Keep everything</asp:ListItem>
+    </asp:DropDownList>
+    <br />
+    <br />
     <asp:Label ID="Label1" runat="server" Text="Survey Name: "></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
     <br />
