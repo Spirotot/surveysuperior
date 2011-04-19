@@ -87,6 +87,9 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
+        // CLEAR OUT DATES IN DROPDOWNLIST2
+        DropDownList2.Items.Clear();
+
         // ADD A BLANK TO THE DATE DROPDOWNLIST (DATES ARE THE CONTENTS OF DROPDOWNLIST2)
         DropDownList2.AppendDataBoundItems = true;
         DropDownList2.Items.Insert(0, new ListItem(String.Empty, String.Empty));
@@ -122,6 +125,9 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         DateTime date = DateTime.Parse(DropDownList2.Text);
         Label2.Text = date.Month.ToString() + '/' + date.Day + '/' + date.Year;
 
+        // CLEAR OUT SURVEY NAMES IN DROPDOWNLIST3
+        DropDownList3.Items.Clear();
+
         // ADD A BLANK TO THE SURVEY NAME DROPDOWNLIST (SURVEY NAMES ARE THE CONTENTS OF DROPDOWNLIST3)
         DropDownList3.AppendDataBoundItems = true;
         DropDownList3.Items.Insert(0, new ListItem(String.Empty, String.Empty));
@@ -150,6 +156,20 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         DropDownList3.DataBind();
         dr.Close();
 
+        
+
+        conn.Close();
+    }
+    protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string conStr;
+        string sqlStr;
+
+        // CREATE CONNECTION TO DATABASE
+        conStr = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection conn = new SqlConnection(conStr);
+        conn.Open();
+
         // SURVEY QUESTION THAT MATCHES DATE, CLASSNAME, AND SURVEY NAME
         sqlStr = "SELECT SurveyQuestion FROM CreateSurvey WHERE Date = @pDate AND ClassName = @pClassName AND SurveyName = @pSurveyName";
         SqlCommand cmd1 = new SqlCommand(sqlStr, conn);
@@ -165,8 +185,14 @@ public partial class Student_TakeSurvey : System.Web.UI.Page
         {
             Label3.Text = dr1.GetValue(0).ToString();
         }
+        else
+        {
+            // THIS SHOULD NEVER HAPPEN BUT I FIGURED I WOULD ADD IT FOR FUNSIES
+            Label3.Text = "YOU SUCK!";
+        }
         dr1.Close();
 
         conn.Close();
     }
+
 }

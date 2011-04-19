@@ -33,7 +33,8 @@
                 PropertyName="SelectedValue" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True">
+    <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True" 
+        onselectedindexchanged="DropDownList3_SelectedIndexChanged">
     </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 

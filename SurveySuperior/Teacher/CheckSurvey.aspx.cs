@@ -45,6 +45,9 @@ public partial class Teacher_CheckSurvey : System.Web.UI.Page
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
+        // CLEAR OUT SURVEY NAMES IN DROPDOWNLIST2
+        DropDownList2.Items.Clear();
+
         // ADD A BLANK TO THE DATE DROPDOWNLIST (DATES ARE THE CONTENTS OF DROPDOWNLIST2)
         DropDownList2.AppendDataBoundItems = true;
         DropDownList2.Items.Insert(0, new ListItem(String.Empty, String.Empty));
@@ -79,6 +82,9 @@ public partial class Teacher_CheckSurvey : System.Web.UI.Page
         string conStr;
         string check;
         string sqlStr;
+
+        // CLEAR OUT SURVEY NAMES IN DROPDOWNLIST3
+        DropDownList3.Items.Clear();
 
         // ADD A BLANK TO THE SURVEY NAME DROPDOWNLIST (SURVEY NAMES ARE THE CONTENTS OF DROPDOWNLIST3)
         DropDownList3.AppendDataBoundItems = true;
