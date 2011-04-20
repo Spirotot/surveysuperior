@@ -261,7 +261,41 @@ public partial class Teacher_CheckSurvey : System.Web.UI.Page
             Label5.Text = c3.ToString();
             Label7.Text = c4.ToString();
 
+            conn.Close();
 
+            conn.Open();
+
+
+            // CHECK SURVEY TYPE
+            int isA = 0;
+            string stype = "";
+            check = "SELECT SurveyType FROM CreateSurvey WHERE SurveyName = @pSurveyName";
+            SqlCommand cmd202 = new SqlCommand(check, conn);
+            cmd202.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
+            cmd202.CommandText = check;
+            dr = cmd202.ExecuteReader();
+            if (dr.Read())
+            {
+                stype = dr.GetValue(0).ToString();
+                if(stype == "C")
+                    isA = 1;
+            }
+            dr.Close();
+
+            // IF A DISPLAY GRIDVIEW OF USERS AND THEIR ANSWERS
+            if (isA == 1)
+            {
+                // SELECT USER AND ANSWER
+                sqlStr = "SELECT Username, Answer FROM Answer WHERE SurveyName = @pSurveyName";
+                SqlCommand gv2cmd = new SqlCommand(sqlStr, conn);
+                gv2cmd.Parameters.AddWithValue("@pSurveyName", DropDownList3.Text);
+            
+                SqlDataReader reader;
+                reader = gv2cmd.ExecuteReader();
+                GridView2.DataSource = reader;
+                GridView2.DataBind();
+                reader.Close();
+            }
 
             conn.Close();
         }

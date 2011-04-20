@@ -55,6 +55,9 @@
     <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
     &nbsp;<br />
     <br />
+    <asp:GridView ID="GridView2" runat="server">
+    </asp:GridView>
+    <br />
     <a href="../Default.aspx">Default.aspx</a><br />
     </form>
 </body>

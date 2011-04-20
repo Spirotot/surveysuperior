@@ -90,7 +90,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             cmd2.ExecuteNonQuery();
 
             // INSERT POSSIBLE ANSWERS INTO PANSWERS TABLE (ALLOWS US TO EASILY PRINT OUT THE POSSIBLE ANSWERS FOR THE SURVEY TAKERS)
-            insert = "INSERT INTO PAnswers VALUES (@pSurveyName, @pA1)";
+            insert = "INSERT INTO PAnswers VALUES (@pSurveyName, @pA1, 0)";
             SqlCommand cmd3 = new SqlCommand(insert, conn);
             cmd3.Parameters.AddWithValue("@pSurveyName", TextBox1.Text);
             cmd3.Parameters.AddWithValue("@pA1", TextBox3.Text);
@@ -99,7 +99,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             cmd3.ExecuteNonQuery();
 
 
-            insert = "INSERT INTO PAnswers VALUES (@pSurveyName, @pA2)";
+            insert = "INSERT INTO PAnswers VALUES (@pSurveyName, @pA2, 0)";
             SqlCommand cmd4 = new SqlCommand(insert, conn);
             cmd4.Parameters.AddWithValue("@pSurveyName", TextBox1.Text);
             cmd4.Parameters.AddWithValue("@pA2", TextBox4.Text);
@@ -108,7 +108,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             cmd4.ExecuteNonQuery();
 
 
-            insert = "INSERT INTO PAnswers VALUES (@pSurveyName, @pA3)";
+            insert = "INSERT INTO PAnswers VALUES (@pSurveyName, @pA3, 0)";
             SqlCommand cmd5 = new SqlCommand(insert, conn);
             cmd5.Parameters.AddWithValue("@pSurveyName", TextBox1.Text);
             cmd5.Parameters.AddWithValue("@pA3", TextBox5.Text);
@@ -117,7 +117,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             cmd5.ExecuteNonQuery();
 
 
-            insert = "INSERT INTO PAnswers VALUES (@pSurveyName, @pA4)";
+            insert = "INSERT INTO PAnswers VALUES (@pSurveyName, @pA4, 0)";
             SqlCommand cmd6 = new SqlCommand(insert, conn);
             cmd6.Parameters.AddWithValue("@pSurveyName", TextBox1.Text);
             cmd6.Parameters.AddWithValue("@pA4", TextBox6.Text);
