@@ -23,15 +23,6 @@
     <form id="form1" runat="server">
     <a href="Student/TakeSurvey.aspx"><img id="img1" onmouseover="change(1,1)" onmouseout="change(1,0)" src="img/dsu-logo-2colors_none1.gif" />
     <a href="Teacher/TeacherDefault.aspx"><img id="img2" onmouseover="change(2,1)" onmouseout="change(2,0)" src="img/dsu-logo-2colors_none2.gif" /></a>
-    <asp:LoginStatus ID="LoginStatus1" runat="server" />
-    <p>
-        <a href="Student/TakeSurvey.aspx">TakeSurvey.aspx</a></p>
-    <p>
-        <a href="Teacher/CreateSurvey.aspx">CreateSurvey.aspx</a></p>
-    <p>
-        <a href="Teacher/CheckSurvey.aspx">CheckSurvey.aspx</a></p>
     </form>
-    <p>
-        <a href="Teacher/MakeClass.aspx">MakeClass.aspx</a></p>
 </body>
 </html>
