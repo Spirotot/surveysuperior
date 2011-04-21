@@ -4,12 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Make Class</title>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    
+    Logged in as:  <asp:LoginName runat="server"/>
     </div>
     <asp:Label ID="Label1" runat="server" Text="ClassName"></asp:Label>
 &nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>

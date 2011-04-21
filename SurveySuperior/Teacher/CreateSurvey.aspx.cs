@@ -48,7 +48,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
         string conStr;
         string check;
         string insert;
-        string date = DateTime.Now.Date.ToString();
+        string date = DateTime.Now.ToShortDateString();
 
         // CREATE CONNECTION TO DATABASE
         conStr = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
@@ -125,7 +125,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             cmd6.CommandText = insert;
             cmd6.ExecuteNonQuery();
 
-            Response.Redirect("../Default.aspx");
+            Response.Redirect("TeacherDefault.aspx");
         }
         conn.Close();
     }

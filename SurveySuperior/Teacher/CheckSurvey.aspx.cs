@@ -116,7 +116,7 @@ public partial class Teacher_CheckSurvey : System.Web.UI.Page
         dr.Close();
 
         // SELECT ALL USERS AND HOW MANY SURVEYS THEY TOOK PART IN THAT MATCH THE DATE IN DROPDOWNLIST2 AND THE CLASSNAME IN DROPDOWNLIST1
-        sqlStr = "SELECT Username, COUNT(*) FROM Answer WHERE Date = @pDate AND ClassName = @pClassName GROUP BY Username";
+        sqlStr = "SELECT Username, COUNT(*) AS 'Total Questions' FROM Answer WHERE Date = @pDate AND ClassName = @pClassName GROUP BY Username";
         SqlCommand ccmd = new SqlCommand(sqlStr, conn);
         ccmd.Parameters.AddWithValue("@pDate", Label9.Text);
         ccmd.Parameters.AddWithValue("@pClassName", DropDownList1.Text);
@@ -167,7 +167,13 @@ public partial class Teacher_CheckSurvey : System.Web.UI.Page
             SqlDataReader dr = cmd0.ExecuteReader();
             while (dr.Read())
             {
-                Label11.Text = dr["SurveyType"].ToString();
+                string actual = "";
+                if (dr["SurveyType"].ToString() == "A")
+                    actual = "Anonymous";
+                else if (dr["SurveyType"].ToString() == "B")
+                    actual = "Keep who voted, not what";
+                else actual = "Keep everything";
+                Label11.Text = actual;
             }
             dr.Close();
             //END Display the SurveyType
