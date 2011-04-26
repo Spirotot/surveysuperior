@@ -45,7 +45,7 @@
         }
         // setInterval("update()", 5000);
         function start() {
-            t = setTimeout(update(), 5000);
+            t = setTimeout(update(), 1000);
         }
         /*function vote(num){
         alert(num);

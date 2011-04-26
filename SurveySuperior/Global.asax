@@ -16,7 +16,7 @@
                             {"user","1"},
                             {"user2", "2"}
                            }*/;
-        Application["usersCount"] = 2;
+        Application["usersCount"] = 0;
         Application["pollsCount"] = 1;
         //name, votes
         //"Michael", "", "1", "", "3"

@@ -42,17 +42,21 @@ public partial class votingInstant : System.Web.UI.Page
     void clicky(int clicked)
     {
         //TODO
-        int pollId = 0;//use request[]
+        int pollId = 1;//use request[]
+        int usersCount = Convert.ToInt32(Application["usersCount"]);
+        int pollsCount = Convert.ToInt32(Application["pollsCount"]);
         //
         clicked--;
-        Label2.Text = "Voted " + clicked.ToString();
+        
         //get user by username
         String[,] temp = (String[,])Application["users"];
-        
-        for (int x = 0; x < temp.Length / 2; x++)
+        Label2.Text = "Voted " + clicked.ToString()+ Session["user"].ToString() + temp[0, 0];
+        for (int x = 0; x < usersCount; x++)
         {
-            if (temp[x, 0] == "user")
-                temp[x, pollId+1] = Convert.ToString(clicked);
+            clicked = clicked;
+            temp[x, pollId] = temp[x, pollId];
+            if (temp[x, 0] == Session["user"].ToString())
+                temp[x, pollId] = Convert.ToString(clicked);
         }
         Application["users"] = temp;
         //

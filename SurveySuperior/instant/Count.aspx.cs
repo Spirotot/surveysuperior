@@ -11,6 +11,8 @@ public partial class Student_Default : System.Web.UI.Page
     {
         //TODO
         int pollId = 1;//use request[]
+        int usersCount = Convert.ToInt32(Application["usersCount"]);
+        int pollsCount = Convert.ToInt32(Application["pollsCount"]);
         //
         int a = 0, b = 0, c = 0, d = 0;
         String[,] temp = (String[,])Application["users"];
@@ -20,7 +22,7 @@ public partial class Student_Default : System.Web.UI.Page
 
         //Response.Write("blah" + Convert.ToString(temp[0, 1]=="1"));
         //Console.Write(Convert.ToString(temp.ToString()));
-        for (int x = 0; x < temp.Length/2; x++)
+        for (int x = 0; x < usersCount; x++)
         {
             //Console.Write(Convert.ToString(x)+ "x" + "wowowowo\n");
             if (temp[x, pollId] == "1")

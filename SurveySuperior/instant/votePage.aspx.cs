@@ -30,12 +30,17 @@ public partial class votePage : System.Web.UI.Page
     {
         //TODO
         int pollId = 1;//use request[]
+        int usersCount = Convert.ToInt32(Application["usersCount"]);
+        int pollsCount = Convert.ToInt32(Application["pollsCount"]);
         //
         String[,] temp = (String[,])Application["users"];
-        for (int x = 0; x < temp.Length / 2; x++)
+        int x;
+        for (x = 0; x < usersCount; x++)
         {
             temp[x, pollId] = "";
         }
         Application["users"] = temp;
+        //Response.Write("x" + x.ToString() + " "+ temp[x-1, pollId].ToString());
+        
     }
 }
