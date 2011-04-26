@@ -13,7 +13,25 @@
         Welcome! You have just had some variables set for you! :) Have a peachy day.<br />
         <a href="changeInsta.aspx">changeInsta.aspx</a> - change your poll!<br />
         <a href="votePage.aspx">votePage.aspx</a> - watch the votes as they come in W00T<br />
-        <a href="votingInstant.aspx">votingInstant.aspx</a> - vote on your poll!</div>
+        <a href="votingInstant.aspx">votingInstant.aspx</a> - vote on your poll!<br />
+        <br />
+        <br />
+        <br />
+        polls
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <br />
+        users
+        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        <br />
+        name
+        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+        <br />
+        polls
+        <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+        <br />
+        users
+        <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+    </div>
     </form>
 </body>
 </html>

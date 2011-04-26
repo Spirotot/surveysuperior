@@ -12,10 +12,12 @@
         //password: chuck1!
         // Code that runs on application startup
                                                     //Application["test"] = "fucking a if this works";
-        Application["users"] = new String[,]{
+        Application["users"] = new String[1000,1000]/*{
                             {"user","1"},
                             {"user2", "2"}
-                           };
+                           }*/;
+        Application["usersCount"] = 2;
+        Application["pollsCount"] = 1;
         //name, votes
         //"Michael", "", "1", "", "3"
         //"bob", "", "1", "2", ""

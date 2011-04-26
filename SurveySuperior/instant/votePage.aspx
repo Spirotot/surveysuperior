@@ -72,7 +72,8 @@
     <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
     <br />
     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Change" />
-    <asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="Reset" />
+    <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
+        Text="Reset Votes" />
     </form>
 </body>
 </html>
