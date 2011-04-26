@@ -73,6 +73,7 @@ public partial class Teacher_CheckSurvey : System.Web.UI.Page
         dr = cmd.ExecuteReader();
         DropDownList2.DataSource = dr;
         DropDownList2.DataTextField = "Date";
+        DropDownList2.DataValueField
         DropDownList2.DataBind();
         dr.Close();
         conn.Close();
