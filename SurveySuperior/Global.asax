@@ -11,7 +11,7 @@
         //username: Chuck
         //password: chuck1!
         // Code that runs on application startup
-        Application["test"] = "fucking a if this works";
+                                                    //Application["test"] = "fucking a if this works";
         Application["users"] = new String[,]{
                             {"user","1"},
                             {"user2", "2"}
