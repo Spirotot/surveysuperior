@@ -17,7 +17,6 @@ public partial class Teacher_CheckSurvey : System.Web.UI.Page
             DropDownList1.AppendDataBoundItems = true;
             DropDownList1.Items.Insert(0, new ListItem(String.Empty, String.Empty));
             DropDownList1.SelectedIndex = 0;
-            
 
             string conStr;
             string sqlStr;
@@ -73,7 +72,6 @@ public partial class Teacher_CheckSurvey : System.Web.UI.Page
         dr = cmd.ExecuteReader();
         DropDownList2.DataSource = dr;
         DropDownList2.DataTextField = "Date";
-        DropDownList2.DataValueField
         DropDownList2.DataBind();
         dr.Close();
         conn.Close();
