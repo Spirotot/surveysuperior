@@ -17,14 +17,14 @@
                             {"user2", "2"}
                            }*/;
         Application["usersCount"] = 0;
-        Application["pollsCount"] = 1;
+        Application["pollsCount"] = 0;
         //name, votes
         //"Michael", "", "1", "", "3"
         //"bob", "", "1", "2", ""
 
-        Application["polls"] = new String[,]{
+        Application["polls"] = new String[1000,5];/*{
                             {"poll", "answer1", "answer2", "answer3", "answer4"}
-                           };/*
+                           };*//*
                           * 
                           * 0 question
                           * 1-4answers

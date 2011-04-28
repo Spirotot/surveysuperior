@@ -74,6 +74,10 @@
     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Change" />
     <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
         Text="Reset Votes" />
+    <br />
+    <br />
+    Secret ID:
+    <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>

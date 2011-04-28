@@ -20,10 +20,10 @@ public partial class instant_Default : System.Web.UI.Page
 
 
             
-            for (int x = 1; x <= pollsCount; x++)
+            /*for (int x = 1; x <= pollsCount; x++)
             {
                 temp[usersCount, x] = "0";
-            }
+            }*/
             temp[usersCount, 0] = "User" + Convert.ToString(usersCount);
             Session["user"] = "User" + Convert.ToString(usersCount);
             usersCount++;
@@ -31,7 +31,7 @@ public partial class instant_Default : System.Web.UI.Page
             Application["users"] = temp;
             
         }
-        temp=temp;
+        //temp=temp;
         Label1.Text = Application["pollsCount"].ToString();
         Label2.Text = Application["usersCount"].ToString();
         Label3.Text = Session["user"].ToString();

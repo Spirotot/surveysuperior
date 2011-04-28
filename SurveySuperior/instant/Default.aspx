@@ -14,7 +14,7 @@
         <a href="changeInsta.aspx">changeInsta.aspx</a> - change your poll!<br />
         <a href="votePage.aspx">votePage.aspx</a> - watch the votes as they come in W00T<br />
         <a href="votingInstant.aspx">votingInstant.aspx</a> - vote on your poll!<br />
-        <br />
+        <a href="newPoll.aspx">newPoll.aspx</a> - create a new poll... WOW!<br />
         <br />
         <br />
         polls

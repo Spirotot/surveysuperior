@@ -10,7 +10,7 @@ public partial class votingInstant : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //TODO
-        int pollId = 0;//use request[]
+        int pollId = 1;//use request[]
         //
         String[,] temp = (String[,])Application["polls"];
         Label1.Text = temp[pollId, 0];
@@ -50,10 +50,10 @@ public partial class votingInstant : System.Web.UI.Page
         
         //get user by username
         String[,] temp = (String[,])Application["users"];
-        Label2.Text = "Voted " + clicked.ToString()+ Session["user"].ToString() + temp[0, 0];
+        //Label2.Text = "Voted " + clicked.ToString()+ Session["user"].ToString() + temp[0, 0];
         for (int x = 0; x < usersCount; x++)
         {
-            clicked = clicked;
+            //clicked = clicked;
             temp[x, pollId] = temp[x, pollId];
             if (temp[x, 0] == Session["user"].ToString())
                 temp[x, pollId] = Convert.ToString(clicked);
