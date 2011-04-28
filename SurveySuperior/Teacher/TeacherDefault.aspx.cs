@@ -11,4 +11,8 @@ public partial class Teacher_TeacherDefault : System.Web.UI.Page
     {
 
     }
+    protected void move(object sender, EventArgs e)
+    {
+        
+    }
 }

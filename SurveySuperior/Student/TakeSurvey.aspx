@@ -48,10 +48,10 @@
     </asp:SqlDataSource>
     <br />
     Question:
-    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
     <br />
     Type:
-    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
     <br />
     <asp:RadioButtonList ID="RadioButtonList1" runat="server" 
         DataSourceID="SqlDataSource4" DataTextField="Answer" 
@@ -66,11 +66,11 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <br />
-    <asp:Button ID="Button1" runat="server" Text="Submit" onclick="Button1_Click" />
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-    &nbsp;<asp:Label ID="Label2" runat="server"></asp:Label>
+    <asp:Button ID="Button1" runat="server" Text="Submit" onclick="Button1_Click" /> <br />
+    Last Choice: <asp:Label ID="Label1" runat="server" Text=""></asp:Label> <br />
+    Made On: <asp:Label ID="Label2" runat="server"></asp:Label>
     </form>
     <p>
-        <a href="../Default.aspx">Default.aspx</a></p>
+        <a href="../Default.aspx">Splash Page</a></p>
 </body>
 </html>

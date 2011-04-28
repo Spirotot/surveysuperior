@@ -125,7 +125,7 @@ public partial class Teacher_CreateSurvey : System.Web.UI.Page
             cmd6.CommandText = insert;
             cmd6.ExecuteNonQuery();
 
-            Response.Redirect("TeacherDefault.aspx");
+            Response.Redirect("CheckSurvey.aspx");
         }
         conn.Close();
     }

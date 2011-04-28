@@ -4,17 +4,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>SurveySuperior - Log In</title>
 </head>
 <body>
     <form id="form1" runat="server">
     <asp:Login ID="Login1" runat="server">
     </asp:Login>
+    <br />
+    <asp:Button ID="createUser" runat="server" Text="Create New Account" OnClick="change" />
     <p>
-        &nbsp;<a href="Default.aspx"><asp:CreateUserWizard 
+    <a href="Default.aspx"><asp:CreateUserWizard 
             ID="CreateUserWizard1" runat="server" BackColor="#E3EAEB" 
             BorderColor="#E6E2D8" BorderStyle="Solid" BorderWidth="1px" 
-            Font-Names="Verdana" Font-Size="0.8em">
+            Font-Names="Verdana" Font-Size="0.8em" Visible="false">
             <ContinueButtonStyle BackColor="White" BorderColor="#C5BBAF" 
                 BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" 
                 ForeColor="#1C5E55" />

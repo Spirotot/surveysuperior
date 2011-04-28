@@ -9,20 +9,29 @@
     <script type="text/javascript">
         function change(a, b) {
             if (a == 1 && b == 1)
-                img1.src = "img/dsu-logo-2colors_stu.gif";
+                img1.src = "img/dsu-logo-2colors_stu.jpg";
             if (a == 1 && b == 0)
-                img1.src = "img/dsu-logo-2colors_none1.gif";
+                img1.src = "img/dsu-logo-2colors_none1.jpg";
             if (a == 2 && b == 1)
-                img2.src = "img/dsu-logo-2colors_tea.gif";
+                img2.src = "img/dsu-logo-2colors_tea.jpg";
             if (a == 2 && b == 0)
-                img2.src = "img/dsu-logo-2colors_none2.gif";
+                img2.src = "img/dsu-logo-2colors_none2.jpg";
         }
     </script>
+    <style type="text/css">
+        img
+        {
+            margin-right: 0px;
+        }
+        body
+        {
+            background-color: #B7B9B6;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <a href="Student/TakeSurvey.aspx"><img id="img1" onmouseover="change(1,1)" onmouseout="change(1,0)" src="img/dsu-logo-2colors_none1.gif" />
-    <a href="Teacher/TeacherDefault.aspx"><img id="img2" onmouseover="change(2,1)" onmouseout="change(2,0)" src="img/dsu-logo-2colors_none2.gif" /></a>
+    <a href="Student/TakeSurvey.aspx"><img id="img1" onmouseover="change(1,1)" onmouseout="change(1,0)" src="img/dsu-logo-2colors_none1.jpg" /><a href="Teacher/TeacherDefault.aspx"><img id="img2" onmouseover="change(2,1)" onmouseout="change(2,0)" src="img/dsu-logo-2colors_none2.jpg" /></a>
     </form>
 </body>
 </html>

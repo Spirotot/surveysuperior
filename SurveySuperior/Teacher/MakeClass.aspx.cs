@@ -51,6 +51,6 @@ public partial class Teacher_MakeClass : System.Web.UI.Page
             cmd2.CommandText = insert;
             cmd2.ExecuteNonQuery();
         }
-        Response.Redirect("TeacherDefault.aspx");
+        Response.Redirect("CheckSurvey.aspx");
     }
 }

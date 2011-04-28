@@ -18,19 +18,19 @@
         <br />
         <br />
         polls
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
         <br />
         users
-        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
         <br />
         name
-        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
         <br />
         polls
-        <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
         <br />
         users
-        <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
     </div>
     </form>
 </body>

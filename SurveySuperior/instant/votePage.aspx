@@ -64,12 +64,12 @@
     <br />
     <br />
     <br />
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
     <br />
-    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
-    <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+    <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+    <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+    <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
     <br />
     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Change" />
     <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
@@ -77,7 +77,7 @@
     <br />
     <br />
     Secret ID:
-    <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label6" runat="server" Text=""></asp:Label>
     </form>
 </body>
 </html>

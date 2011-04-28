@@ -33,29 +33,28 @@
         onselectedindexchanged="DropDownList3_SelectedIndexChanged">
     </asp:DropDownList>
     <br />
-    <br />
-    <a href="TeacherDefault.aspx">TeacherDefault.aspx</a><br />
+        <br />
     </div>
     <div style="position:relative; float:left; left:10px">
     Survey type:
-    <asp:Label ID="Label11" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label11" runat="server" Text=""></asp:Label>
     <br />
     <br />
-    <asp:Label ID="Label1" runat="server" CssClass="lbl" Text="Label" Width="40"></asp:Label>
+    <asp:Label ID="Label1" runat="server" CssClass="lbl" Text="" Width="40"></asp:Label>
     &nbsp;students picked
-    <asp:Label ID="Label2" runat="server" CssClass="lbl2" Text="Label"></asp:Label>
+    <asp:Label ID="Label2" runat="server" CssClass="lbl2" Text=""></asp:Label>
     <br />
-    <asp:Label ID="Label3" runat="server" CssClass="lbl" Text="Label" Width="40"></asp:Label>
+    <asp:Label ID="Label3" runat="server" CssClass="lbl" Text="" Width="40"></asp:Label>
     &nbsp;students picked
-    <asp:Label ID="Label4" runat="server" CssClass="lbl2" Text="Label"></asp:Label>
+    <asp:Label ID="Label4" runat="server" CssClass="lbl2" Text=""></asp:Label>
     <br />
-    <asp:Label ID="Label5" runat="server" CssClass="lbl" Text="Label" Width="40"></asp:Label>
+    <asp:Label ID="Label5" runat="server" CssClass="lbl" Text="" Width="40"></asp:Label>
     &nbsp;students picked
-    <asp:Label ID="Label6" runat="server" CssClass="lbl2" Text="Label"></asp:Label>
+    <asp:Label ID="Label6" runat="server" CssClass="lbl2" Text=""></asp:Label>
     <br />
-    <asp:Label ID="Label7" runat="server" CssClass="lbl" Text="Label" Width="40"></asp:Label>
+    <asp:Label ID="Label7" runat="server" CssClass="lbl" Text="" Width="40"></asp:Label>
     &nbsp;students picked
-    <asp:Label ID="Label8" runat="server" CssClass="lbl2" Text="Label"></asp:Label>
+    <asp:Label ID="Label8" runat="server" CssClass="lbl2" Text=""></asp:Label>
     &nbsp;<br />
     <br />
     <asp:GridView ID="GridView2" runat="server" HeaderStyle-BackColor="Blue" HeaderStyle-Font-Italic="true" HeaderStyle-ForeColor="Yellow" RowStyle-BackColor="OldLace" AlternatingRowStyle-BackColor="LightGray">
