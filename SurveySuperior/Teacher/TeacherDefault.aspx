@@ -13,6 +13,7 @@
     </style>
     <script type="text/javascript">
         function move(link) {
+        //link is the value passed in by the onclick
             if (link == 1)
                 document.getElementById("frame").src = "CheckSurvey.aspx";
             if (link == 2)
